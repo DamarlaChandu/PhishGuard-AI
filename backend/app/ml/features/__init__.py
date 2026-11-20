@@ -15,7 +15,7 @@ from app.ml.features.extractor import (
     extract_features_from_normalized,
     extract_url_features,
 )
-from app.ml.features.domain import DomainInfo, extract_domain_info
+from app.ml.features.domain import DomainInfo, domain_group_key, extract_domain_info
 from app.ml.features.normalization import InvalidURLError, NormalizedURL, normalize_url
 
 __all__ = [
@@ -24,6 +24,7 @@ __all__ = [
     "InvalidURLError",
     "NormalizedURL",
     "URLFeatures",
+    "domain_group_key",
     "extract_domain_info",
     "extract_features_from_normalized",
     "extract_url_features",

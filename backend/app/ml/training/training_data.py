@@ -14,7 +14,7 @@ import numpy as np
 from sklearn.model_selection import StratifiedGroupKFold
 
 from app.ml.features import FEATURE_NAMES
-from app.ml.features.domain import extract_domain_info
+from app.ml.features.domain import domain_group_key
 
 TARGET_COLUMN = "label"
 METADATA_COLUMNS: tuple[str, ...] = ("url", "domain", "source", "collected_at", "cleaning_actions")
@@ -62,15 +62,7 @@ def registrable_domain(hostname: str) -> str:
     their normalized host string as a group key so unrelated values do not
     collapse into one empty group.
     """
-    host = hostname.strip().lower()
-    if host.endswith("."):
-        host = host[:-1]
-    if not host:
-        return host
-    domain_info = extract_domain_info(host)
-    if domain_info.registrable_domain:
-        return domain_info.registrable_domain
-    return host
+    return domain_group_key(hostname)
 
 
 def load_feature_dataset(path: Path) -> FeatureDataset:

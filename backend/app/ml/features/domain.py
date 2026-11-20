@@ -89,3 +89,19 @@ def extract_domain_info(hostname: str) -> DomainInfo:
         registrable_domain=registrable_domain,
         subdomain_count=len(extracted.subdomain.split(".")) if extracted.subdomain else 0,
     )
+
+
+def domain_group_key(hostname: str) -> str:
+    """Return an eTLD+1 group key, or the normalized host when none exists.
+
+    The fallback keeps IPs, local names, and malformed names distinct without
+    claiming they are registrable domains.
+    """
+    if not isinstance(hostname, str):
+        return ""
+    host = hostname.strip().lower()
+    if host.endswith("."):
+        host = host[:-1]
+    if not host:
+        return ""
+    return extract_domain_info(host).registrable_domain or host
