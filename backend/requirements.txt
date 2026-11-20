@@ -1,0 +1,16 @@
+# Web framework and ASGI server
+fastapi==0.162.5
+uvicorn==0.54.0
+
+# Configuration (.env support via its python-dotenv dependency)
+pydantic-settings==2.15.0
+
+# Database
+SQLAlchemy==2.0.58
+
+# Offline Public Suffix List snapshot for URL domain extraction
+tldextract==5.4.0
+
+# Testing (httpx2 is required by FastAPI's TestClient)
+pytest==9.2.0
+httpx2==2.14.0

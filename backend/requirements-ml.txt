@@ -1,0 +1,7 @@
+# Machine-learning training dependencies (in addition to requirements.txt).
+# Versions match the environment the baseline models were trained with.
+-r requirements.txt
+
+scikit-learn==1.7.2
+numpy==2.2.6
+joblib==1.5.2
